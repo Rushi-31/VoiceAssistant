@@ -8,10 +8,10 @@ import pyttsx3
 import wikipedia
 greeting = ['hey there', 'hello', 'hi', 'Hai', 'gandu', 'hey']
 grres = ["hey Rushikesh ", 'hello whatsap ']
-question = ['Hello How are you', 'What are you doing', "what's your mind"]
+question = ['hello how are you', 'What are you doing', "what's your mind"]
 boar = ['i am getting boar', 'tell me something', 'boar', "bored", ]
 entertane = ["lets do something", 'don\'t worry', 'I am here']
-responses = ['Okay', "I'm fine"]
+responses = ['I am doing well hope you and your loved onces are safe in this time', "I'm fine"]
 ytcmd = ['open youtube', 'i want to watch a video']
 favsong = ['play my song', 'play tera fitur', 'song']
 rep = ['repeat', 'copy me', 'repeat me', 'say with me']
@@ -56,11 +56,10 @@ def repeat(bol):
 
 
 def website(webname):
-    print("opening" + " " + "link" + "(" + webnamewrite+")..")
-    time.sleep(5)
-    breaks
+    print("opening" + " " + "link" + "(" + webname+")..")
+    webname = "www."+webname+".com"
     webbrowser.open(webname, new=2)
-
+    
 
 def open(link):
     print("Opening your favorite song...")
@@ -124,7 +123,7 @@ while True:
         open(song)
 
     elif voice in question:
-        reply = random.choise(responses)
+        reply = random.choice(responses)
         print(reply)
         speak(reply)
     elif voice in boar:
@@ -148,7 +147,7 @@ while True:
      bol = "sure , just tell me what ?"
      speak(bol)
      said = listen()
-     while(said!="stop Repeating"): 
+     while(said!="close"): 
       speak(said)
       said=listen()
       
@@ -204,3 +203,18 @@ while True:
     elif 'the time' in voice:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")    
             speak(f"Sir, the time is {strTime}")
+    elif 'open google' in voice:
+        website("google")
+        speak("opening google")
+    elif 'open youtube' in voice:
+        website('youtube')
+        speak("opennning youtube")
+    elif 'open spotify' in voice:
+        path1 = "C:\\Users\\Rushikesh Chopade\\Desktop\\Spotify.lnk"
+        os.startfile(path1)
+    elif 'open WhatsApp' in voice:
+        path2="C:\\Users\\Rushikesh Chopade\\Desktop\\WhatsApp.lnk"
+        os.startfile(path2)
+        speak("openning WhatsApp")
+        break
+    
