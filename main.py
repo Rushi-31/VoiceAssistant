@@ -172,7 +172,7 @@ while True:
         voices = engine.getProperty('voices')
         j = random.choice(sound)
         engine.setProperty('voice', voices[1].id)
-        msg='sure'+" "+name +'I have changed my voice for you , is it prettier ?'
+        msg='sure'+" "+name +" "+'I have changed my voice for you , is it prettier ?'
         print(msg)
         speak(msg)
        
@@ -184,7 +184,7 @@ while True:
                 voices = engine.getProperty('voices')
                 
                 engine.setProperty('voice', voices[2].id)
-                msg='sure'+name +'I have changed my voice for you , is it prettier ?'
+                msg='sure'+" "+name +" "+'I have changed my voice for you , is it prettier ?'
                 print(msg)
                 speak(msg)
         if 'try other' in conform:
@@ -193,7 +193,7 @@ while True:
             voices = engine.getProperty('voices')
                 
             engine.setProperty('voice', voices[0].id)
-            msg='sure,'+name +'I have changed my voice for you , is it prettier ?'
+            msg='sure'+" "+name +" "+'I have changed my voice for you , is it prettier ?'
             print(line)
             speak(line)
 
