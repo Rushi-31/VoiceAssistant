@@ -1,5 +1,4 @@
-from gtts import gTTS
-from playsound import playsound
+
 import webbrowser
 import speech_recognition as sr
 import os
@@ -103,13 +102,13 @@ def listen():
 
 
 clear()
-
+name = "Rushikesh"
 wishMe()
-print('hey\' welcome can I know your name ')
-speak("can I know your name sir ")
-name = listen()
-print("hello"+name)    
-speak("Hey"+name)
+# print('hey\' welcome can I know your name ')
+# speak("can I know your name sir ")
+# name = listen()
+# print("hello"+name)    
+# speak("Hey"+name)
 
 while True:
     
@@ -168,12 +167,12 @@ while True:
         path = 'C:\\Users\\Rushikesh Chopade\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe'
         os.startfile(path)
     
-    elif 'change voice' or "change your voice" or 'change your sound' in voice:
+    elif 'change' in voice:
         engine = pyttsx3.init('sapi5')
         voices = engine.getProperty('voices')
         j = random.choice(sound)
         engine.setProperty('voice', voices[1].id)
-        msg='sure'+name +'I have changed my voice for you , is it prettier ?'
+        msg='sure'+" "+name +" "+'I have changed my voice for you , is it prettier ?'
         print(msg)
         speak(msg)
        
@@ -185,7 +184,7 @@ while True:
                 voices = engine.getProperty('voices')
                 
                 engine.setProperty('voice', voices[2].id)
-                msg='sure'+name +'I have changed my voice for you , is it prettier ?'
+                msg='sure'+" "+name +" "+'I have changed my voice for you , is it prettier ?'
                 print(msg)
                 speak(msg)
         if 'try other' in conform:
@@ -194,7 +193,7 @@ while True:
             voices = engine.getProperty('voices')
                 
             engine.setProperty('voice', voices[0].id)
-            msg='sure,'+name +'I have changed my voice for you , is it prettier ?'
+            msg='sure'+" "+name +" "+'I have changed my voice for you , is it prettier ?'
             print(line)
             speak(line)
 
