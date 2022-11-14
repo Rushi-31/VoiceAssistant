@@ -6,7 +6,8 @@ import datetime
 import random
 import pyttsx3
 import wikipedia
-greeting = ['hey there', 'hello', 'hi', 'Hai', 'gandu', 'hey']
+import pyautogui as at
+greeting = ['hey there', 'hello', 'hi', 'Hai', 'hey']
 grres = ["hey Rushikesh ", 'hello whatsap ']
 question = ['hello how are you', 'What are you doing', "what's your mind"]
 boar = ['i am getting boar', 'tell me something', 'boar', "bored", ]
@@ -17,15 +18,17 @@ favsong = ['play my song', 'play tera fitur', 'song']
 rep = ['repeat', 'copy me', 'repeat me', 'say with me']
 back = ['exit', 'close', 'goodbye', 'nothing', 'bye']
 clr = ["clear my screen","clear","clean"]
-gaali = ["haramkhor",'lavde','chutiya','gandu','madarchod']
+gaali = ["haramkhor",'lavdey','chutiya','gandu','madarchod','rampur']
+gaali1 = ['lavdey','chutiya','gandu','madarchod']
 language = 'en'
 sentence = "Hey, say something."
 sound=[1,2,0]
 engine = pyttsx3.init('sapi5')
+engine.setProperty('rate', 210)
+engine.setProperty('volume', 1)
 voices = engine.getProperty('voices')
 i =0
 engine.setProperty('voice', voices[0].id)
-
 
 def wishMe():
     hour = int(datetime.datetime.now().hour)
@@ -41,8 +44,8 @@ def wishMe():
           
         print("Good Evening!")
         speak("Good Evening!")
-    print("I am space sir ,Please tell me how may I help you?")
-    speak("I am space sir , Please tell me how may I help you")  
+    print("Phew, it's good to be back. by the way." "Oh, hello sir.")
+    speak("Phew, it's good to be back. by the way" "Ohh, hello sir.")  
 
 def clear():
     os.system("cls")
@@ -94,12 +97,10 @@ def listen():
          print("Say that again please...")  
          return "None"
   
-    return audiosaid        
+    return audiosaid.lower()        
    
 
-
-
-
+ 
 clear()
 name = "Rushikesh"
 wishMe()
@@ -108,11 +109,10 @@ wishMe()
 # name = listen()
 # print("hello"+name)    
 # speak("Hey"+name)
-
 while True:
-    
-    
-    voice = listen().lower()
+
+
+    voice =listen()
     if voice in greeting:
         greet = random.choice(grres)
         print(greet)
@@ -121,7 +121,6 @@ while True:
         song = "https://www.youtube.com/watch?v=qfdShSZZxlg&ab_channel=TipsOfficial"
         speak("playing your favorie song on youtube")
         open(song)
-
     elif voice in question:
         reply = random.choice(responses)
         print(reply)
@@ -141,7 +140,8 @@ while True:
         speak("ok sure cleaning your screen")
         clear()
     elif voice in gaali:
-        gali = random.choice(gaali)
+        gali = random.choice(gaali1)
+        print(gali)
         speak(gali)
     elif voice in rep:
      bol = "sure , just tell me what ?"
@@ -150,9 +150,6 @@ while True:
      while(said!="close"): 
       speak(said)
       said=listen()
-      
-   
-    
         # Logic for executing tasks based on query
     elif 'wikipedia' in voice:
             speak('Searching Wikipedia...')
@@ -161,11 +158,10 @@ while True:
             speak("According to Wikipedia")
             print(results)
             speak(results)
-    
     elif voice == "open code":
         path = 'C:\\Users\\Rushikesh Chopade\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe'
         os.startfile(path)
-    
+        speak("openning visual studio code")
     elif 'change' in voice:
         engine = pyttsx3.init('sapi5')
         voices = engine.getProperty('voices')
@@ -174,14 +170,10 @@ while True:
         msg='sure'+" "+name +" "+'I have changed my voice for you , is it prettier ?'
         print(msg)
         speak(msg)
-       
         conform = listen()
-
         if 'no' in conform:
-            
                 engine = pyttsx3.init('sapi5')
                 voices = engine.getProperty('voices')
-                
                 engine.setProperty('voice', voices[2].id)
                 msg='sure'+" "+name +" "+'I have changed my voice for you , is it prettier ?'
                 print(msg)
@@ -190,31 +182,27 @@ while True:
             line = "ok, sound is setted to default"
             engine = pyttsx3.init('sapi5')
             voices = engine.getProperty('voices')
-                
             engine.setProperty('voice', voices[0].id)
             msg='sure'+" "+name +" "+'I have changed my voice for you , is it prettier ?'
             print(line)
             speak(line)
-
         else :
                 print("ok I will use this voice from now")    
                 speak(("ok I will use this voice from now") )
-                
     elif 'the time' in voice:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")    
             speak(f"Sir, the time is {strTime}")
     elif 'open google' in voice:
         website("google")
         speak("opening google")
+    elif 'open whatsapp' in voice:
+        way = "C:\\Users\\Rushikesh Chopade\\Desktop\\WhatsApp.lnk"
+        os.startfile(way)
+        speak("openning WhatsApp")
     elif 'open youtube' in voice:
         website('youtube')
         speak("opennning youtube")
     elif 'open spotify' in voice:
         path1 = "C:\\Users\\Rushikesh Chopade\\Desktop\\Spotify.lnk"
         os.startfile(path1)
-    elif 'open WhatsApp' in voice:
-        path2="C:\\Users\\Rushikesh Chopade\\Desktop\\WhatsApp.lnk"
-        os.startfile(path2)
-        speak("openning WhatsApp")
-        break
     
